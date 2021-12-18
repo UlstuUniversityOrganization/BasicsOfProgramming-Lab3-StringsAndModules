@@ -1,15 +1,12 @@
-﻿// BasicsOfProgramming-Lab3-StringsAndModules.cpp : Определяет точку входа для приложения.
-//
-
-#include "framework.h"
+﻿#include "framework.h"
 #include "BasicsOfProgramming-Lab3-StringsAndModules.h"
 
 #define MAX_LOADSTRING 100
 
-// Глобальные переменные:
-HINSTANCE hInst;                                // текущий экземпляр
-WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
-WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
+
+HINSTANCE hInst;           
+WCHAR szTitle[MAX_LOADSTRING];     
+WCHAR szWindowClass[MAX_LOADSTRING];          
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -79,7 +76,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // Сохранить маркер экземпляра в глобальной переменной
+   hInst = hInstance;
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
@@ -106,7 +103,7 @@ void DrawThePircture(HDC hdc, COLORREF color)
     POINT dir2 = { 1, -1 };
     int length = 300;
 
-    HPEN pen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+    HPEN pen = CreatePen(PS_SOLID, 1, color);
     SelectObject(hdc, pen);
 
     int linesCount = 30;
@@ -142,7 +139,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            DrawThePircture(hdc, RGB(255, 0, 0));
+            DrawThePircture(hdc, RGB(0, 255, 255));
             EndPaint(hWnd, &ps);
         }
         break;
